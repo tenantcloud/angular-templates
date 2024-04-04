@@ -18,4 +18,12 @@
       <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
     </context>
   </template>
+  <template name="bfei" value="beforeEach(inject([$NAME$], ($LNAME$: $NAME$) => { }));" description="Before each block with angular inject wrapper" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+    <variable name="LNAME" expression="camelCase(NAME)" defaultValue="" alwaysStopAt="true"/>
+    <context>
+      <option name="JS_TOP_LEVEL_STATEMENT" value="true"/>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true"/>
+    </context>
+  </template>
 </templateSet>

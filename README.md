@@ -15,6 +15,7 @@ How to:
 
 - [Mock](#mock)
 - [PO](#po)
+- [BeforeEach inject](#beforeeach-inject)
 - [Service](#service)
 - [API](#api)
 - [Action Service](#action-service)
@@ -73,9 +74,17 @@ export class $NAME$PO {
 }
 ```
 
+### BeforeEach inject ###
+#### (bfei + Tab) ####
+
+```
+beforeEach(inject([$NAME$], ($LNAME$: $NAME$) => {
+	
+}));
+```
+
 ### Service ###
 #### (ss + Tab) ####
-
 ```
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator';
 
