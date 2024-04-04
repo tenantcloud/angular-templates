@@ -1,0 +1,21 @@
+<templateSet group="Angular Testing">
+  <template name="po" value="import { Spectator } from '@ngneat/spectator';&#10;&#10;export class $NAME$PO {&#10;&#9;constructor(private readonly spectator: Spectator&lt;unknown&gt;) {}&#10;&#10;&#9;public get some(): HTMLElement {&#10;&#9;&#9;return this.spectator.query('.some') as HTMLElement;&#10;&#9;}&#10;}&#10;" description="Angular po class template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.po&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="poh" value="import { SpectatorHost } from '@ngneat/spectator';&#10;&#10;export class $NAME$PO {&#10;&#9;constructor(private readonly spectator: SpectatorHost&lt;unknown&gt;) {}&#10;&#10;&#9;public get some(): HTMLElement {&#10;&#9;&#9;return this.spectator.query('.some') as HTMLElement;&#10;&#9;}&#10;}&#10;" description="Angular po class template for host" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.po&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="mock" value="import { faker } from '@faker-js/faker';&#10;&#10;import { DataMock } from '@app/test-module/mocks/data/data.mock';&#10;&#10;import { $NAME$ } from '../interfaces/$PATH$.interface';&#10;&#10;export class $NAME$Mock extends DataMock implements $NAME$ { &#10;&#10;&#9;constructor(data?: Partial&lt;$NAME$&gt;) {&#10;&#9;&#9;super();&#10;&#10;&#9;&#9;this.updateSelf(data);&#10;&#9;}&#10;}&#10;" description="Template of mock" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="lowercaseAndDash(NAME)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>

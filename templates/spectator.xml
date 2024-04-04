@@ -1,0 +1,91 @@
+<templateSet group="Angular Spectator">
+  <template name="sc" value="import { createComponentFactory, Spectator } from '@ngneat/spectator';&#10;&#10;import { $NAME$ } from './$PATH$';&#10;&#10;import { $NAME$PO } from './$PATH$.po';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let spectator: Spectator&lt;$NAME$&gt;;&#10;&#9;let componentPO: $NAME$PO;&#10;&#9;const createComponent = createComponentFactory({&#10;&#9;&#9;component: $NAME$,&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createComponent();&#10;&#9;componentPO = new $NAME$PO(spectator);&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(spectator.component).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator component template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sch" value="import { createHostFactory, SpectatorHost } from '@ngneat/spectator';&#10;&#10;import { $NAME$ } from './$PATH$';&#10;&#10;import { $NAME$PO } from './$PATH$.po';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let spectator: SpectatorHost&lt;$NAME$&gt;;&#10;&#9;let componentPO: $NAME$PO;&#10;&#9;const createHost = createHostFactory({&#10;&#9;&#9;template: `&lt;$SELECTOR$ /&gt;`,&#10;&#9;&#9;component: $NAME$,&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createHost('');&#10;&#9;componentPO = new $NAME$PO(spectator);&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(spectator.component).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator component with host template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <variable name="SELECTOR" expression="lowercaseAndDash(substringBefore(fileNameWithoutExtension(), &quot;.&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sd" value="import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator';&#10;&#10;import { $NAME$ } from './$PATH$';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let spectator: SpectatorDirective&lt;$NAME$&gt;;&#10;&#9;const createDirective = createDirectiveFactory({&#10;&#9;&#9;directive: $NAME$,&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createDirective(`&lt;div $SELECTOR$&gt;&lt;/div&gt;`);&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(spectator.directive).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator directive template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <variable name="SELECTOR" expression="camelCase(substringBefore(fileNameWithoutExtension(), &quot;.&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sp" value="import { createPipeFactory, SpectatorPipe } from '@ngneat/spectator';&#10;&#10;import { $NAME$ } from './$PATH$';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let spectator: SpectatorPipe&lt;$NAME$&gt;;&#10;&#9;const createPipe = createPipeFactory({&#10;&#9;&#9;pipe: $NAME$,&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createPipe(`&lt;div&gt;{{ input | $PIPE$ }}&lt;/div&gt;`, {&#10;&#9;&#9;&#9;hostProps: { input: 'Test' },&#10;&#9;&#9;});&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(spectator.element).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator pipe template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PIPE" expression="camelCase(substringBefore(fileNameWithoutExtension(), &quot;.&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="ss" value="import { createServiceFactory, SpectatorService } from '@ngneat/spectator';&#10;&#10;import { $NAME$ } from './$PATH$';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let service: $NAME$;&#10;&#9;let spectator: SpectatorService&lt;$NAME$&gt;;&#10;&#9;const createService = createServiceFactory({&#10;&#9;&#9;service: $NAME$,&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createService();&#10;&#9;&#9;service = spectator.service;&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(service).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator service template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sapi" value="import { createHttpFactory, SpectatorHttp } from '@ngneat/spectator';&#10;import { $NAME$ } from './$PATH$';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let service: $NAME$;&#10;&#9;let spectator: SpectatorHttp&lt;$NAME$&gt;;&#10;&#9;const createHttp = createHttpFactory({&#10;&#9;&#9;service: $NAME$,&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createHttp();&#10;&#9;&#9;service = spectator.service;&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(service).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator API template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sapi:get" value="it('should get data', async () =&gt; {&#10;&#9;const data = {};&#10;&#9;const reqPromise = service.getData();&#10;&#10;&#9;spectator.expectOne('/some', HttpMethod.GET).flush(data);&#10;&#10;&#9;const resp = await reqPromise;&#10;&#10;&#9;expect(resp).toEqual(data);&#10;});" description="Angular Spectator API get request template" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JS_CLASS_MEMBER_EXPRESSION" value="false" />
+      <option name="JS_CLASS_MEMBER_STATEMENT" value="false" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sapi:getlist" value="it('check get list', async () =&gt; {&#10;&#9;const data = new ListItemsMock(Mock);&#10;&#9;const reqPromise = service.getList().toPromise();&#10;&#10;&#9;spectator.controller.expectOne(req =&gt; req.url.startsWith('/some') &amp;&amp; req.method === HttpMethod.GET).flush(data);&#10;&#10;&#9;const resp = await reqPromise;&#10;&#10;&#9;expect(resp).toEqual(data);&#10;});" description="Angular Spectator API get list request template" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JS_CLASS_MEMBER_EXPRESSION" value="false" />
+      <option name="JS_CLASS_MEMBER_STATEMENT" value="false" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sas" value="import { createServiceFactory, SpectatorService } from '@ngneat/spectator';&#10;&#10;import { ModalService } from '@app/shared/modules/modal/services';&#10;import { NotifyService } from '@app/core/modules/notify/services';&#10;import { $API$ } from '../../api';&#10;import { $NAME$ } from './$PATH$';&#10;&#10;describe('$NAME$', () =&gt; {&#10;&#9;let service: $NAME$;&#10;&#9;let spectator: SpectatorService&lt;$NAME$&gt;;&#10;&#9;const createService = createServiceFactory({&#10;&#9;&#9;service: $NAME$,&#10;&#9;});&#10;&#10;&#9;let modalService: ModalService;&#10;&#9;let notifyService: NotifyService;&#10;&#9;let $API_V$: $API$;&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spectator = createService();&#10;&#9;&#9;service = spectator.service;&#10;&#10;&#9;&#9;modalService = spectator.inject(ModalService);&#10;&#9;&#9;notifyService = spectator.inject(NotifyService);&#10;&#9;&#9;$API_V$ = spectator.inject($API$);&#10;&#9;});&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spyOn(notifyService, 'success');&#10;&#9;});&#10;&#10;&#9;it('should create', () =&gt; {&#10;&#9;&#9;expect(service).toBeTruthy();&#10;&#9;});&#10;});&#10;" description="Angular Spectator Action Service template" toReformat="false" toShortenFQNames="true">
+    <variable name="API" expression="concat(substringBefore(NAME, &quot;ActionService&quot;), &quot;Api&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;)))" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))" defaultValue="" alwaysStopAt="true" />
+    <variable name="API_V" expression="camelCase(API)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_TOP_LEVEL_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sas:confirm" value="describe('$METHOD_NAME$', () =&gt; {&#10;&#9;const data = new Mock();&#10;&#10;&#9;beforeEach(() =&gt; {&#10;&#9;&#9;spyOn($API_V$, '$METHOD_NAME$').and.resolveTo();&#10;&#9;});&#10;&#10;&#9;it('should be success when confirmed', async () =&gt; {&#10;&#9;&#9;spyOn(modalService, 'confirm').and.resolveTo(true);&#10;&#10;&#9;&#9;const result = await service.$METHOD_NAME$(data);&#10;&#10;&#9;&#9;expect(result).toBeTrue();&#10;&#9;&#9;expect(modalService.confirm).toHaveBeenCalledWith(jasmine.any(Object));&#10;&#9;&#9;expect($API_V$.$METHOD_NAME$).toHaveBeenCalledWith(data);&#10;&#9;&#9;expect(notifyService.success).toHaveBeenCalledWith(jasmine.any(String));&#10;&#9;});&#10;&#10;&#9;it('should be return false when not confirmed', async () =&gt; {&#10;&#9;&#9;spyOn(modalService, 'confirm').and.resolveTo(false);&#10;&#10;&#9;&#9;const result = await service.$METHOD_NAME$(data);&#10;&#10;&#9;&#9;expect(result).toBeFalse();&#10;&#9;&#9;expect(modalService.confirm).toHaveBeenCalledWith(jasmine.any(Object));&#10;&#9;&#9;expect($API_V$.$METHOD_NAME$).not.toHaveBeenCalled();&#10;&#9;&#9;expect(notifyService.success).not.toHaveBeenCalled();&#10;&#9;});&#10;});" description="Angular Spectator Action Service confirm test template" toReformat="false" toShortenFQNames="true">
+    <variable name="METHOD_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="API_V" expression="camelCase(concat(substringBefore(capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.spec&quot;))), &quot;ActionService&quot;), &quot;Api&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_CLASS_MEMBER_EXPRESSION" value="false" />
+      <option name="JS_CLASS_MEMBER_STATEMENT" value="false" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="sas:modal" value="describe('$METHOD_NAME$', () =&gt; {&#10;&#9;const data = new Mock();&#10;&#10;&#9;it('should be successful and notify', async () =&gt; {&#10;&#9;&#9;const modalRef = jasmine.createSpyObj&lt;ModalRef&gt;([], { afterClosed$: of(true) });&#10;&#9;&#9;spyOn(modalService, 'open').and.returnValue(modalRef);&#10;&#10;&#9;&#9;const resp = await service.$METHOD_NAME$(data);&#10;&#10;&#9;&#9;expect(resp).toEqual(true);&#10;&#9;&#9;expect(modalService.open).toHaveBeenCalledWith(Component, { data });&#10;&#9;&#9;expect(notifyService.success).toHaveBeenCalledOnceWith(jasmine.any(String));&#10;&#9;});&#10;&#10;&#9;it('should handle modal close', async () =&gt; {&#10;&#9;&#9;const modalRef = jasmine.createSpyObj&lt;ModalRef&gt;([], { afterClosed$: of(null) });&#10;&#9;&#9;spyOn(modalService, 'open').and.returnValue(modalRef);&#10;&#10;&#9;&#9;const resp = await service.$METHOD_NAME$(data);&#10;&#10;&#9;&#9;expect(resp).toBeNull();&#10;&#9;&#9;expect(modalService.open).toHaveBeenCalledWith(Component, { data });&#10;&#9;&#9;expect(notifyService.success).not.toHaveBeenCalled();&#10;&#9;});&#10;});" description="Angular Spectator Action Service modal test template" toReformat="false" toShortenFQNames="true">
+    <variable name="METHOD_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_CLASS_MEMBER_EXPRESSION" value="false" />
+      <option name="JS_CLASS_MEMBER_STATEMENT" value="false" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>
