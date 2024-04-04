@@ -11,6 +11,19 @@
       <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
     </context>
   </template>
+  <template name="po:get" value="public get some(): HTMLElement { return this.spectator.query('.some') as HTMLElement; }" description="Angular po getter template" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="TS_CLASS" value="true"/>
+      <option name="TS_CLASS_MEMBER_EXPRESSION" value="true"/>
+    </context>
+  </template>
+  <template name="po:getc" value="public get some(): $NAME$ { return this.spectator.query($NAME$) as $NAME$; }" description="Angular po getter component template" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+    <context>
+      <option name="TS_CLASS" value="true"/>
+      <option name="TS_CLASS_MEMBER_EXPRESSION" value="true"/>
+    </context>
+  </template>
   <template name="mock" value="import { faker } from '@faker-js/faker';&#10;&#10;import { DataMock } from '@app/test-module/mocks/data/data.mock';&#10;&#10;import { $NAME$ } from '../interfaces/$PATH$.interface';&#10;&#10;export class $NAME$Mock extends DataMock implements $NAME$ { &#10;&#10;&#9;constructor(data?: Partial&lt;$NAME$&gt;) {&#10;&#9;&#9;super();&#10;&#10;&#9;&#9;this.updateSelf(data);&#10;&#9;}&#10;}&#10;" description="Template of mock" toReformat="false" toShortenFQNames="true">
     <variable name="NAME" expression="capitalize(camelCase(substringBefore(fileNameWithoutExtension(), &quot;.&quot;)))" defaultValue="" alwaysStopAt="true" />
     <variable name="PATH" expression="lowercaseAndDash(NAME)" defaultValue="" alwaysStopAt="true" />

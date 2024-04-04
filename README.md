@@ -74,6 +74,21 @@ export class $NAME$PO {
 }
 ```
 
+#### PO getter (po:get + Tab) ####
+```
+public get some(): HTMLElement {
+	return this.spectator.query('.some') as HTMLElement;
+}
+```
+
+
+#### PO component getter (po:getc + Tab) ####
+```
+public get some(): $NAME$ {
+	return this.spectator.query($NAME$) as $NAME$;
+}
+```
+
 ### BeforeEach inject ###
 #### (bfei + Tab) ####
 
