@@ -59,9 +59,7 @@ export class $NAME$PO {
 }
 ```
 
-### Host PO ###
-#### (poh + Tab) ####
-
+#### Host PO (poh + Tab) ####
 ```
 import { SpectatorHost } from '@ngneat/spectator';
 
